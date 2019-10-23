@@ -1,16 +1,39 @@
+" vim-plug start
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'yianwillis/vimcdoc'
+call plug#end()
+" vim-plug end
+
+filetype on
 syntax on
-set expandtab
-set nu
-set relativenumber
-set ts=4
-set sw=4
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
+set number
+set smartindent
 set backspace=indent,eol,start
 
-map <C-n> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Python
+autocmd FileType python set expandtab
+autocmd FileType python set textwidth=79
 
-call plug#begin()
-Plug 'scrooloose/nerdtree'
-Plug 'davidhalter/jedi-vim'
-call plug#end()
+
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" Insert current date and time
+map <F2> oDate:<Esc>:read !date<CR>kJ0
+
+" F5 to auto run .py file
+map <F5> :call RunPythonFile()<CR> 
+function RunPythonFile()
+	exec "w"
+	if &filetype ==  'python'	
+		exec "!clear"
+		exec "!time python3 %"
+	endif
+endfunction
