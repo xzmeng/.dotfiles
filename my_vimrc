@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'yianwillis/vimcdoc'
+Plug 'tpope/vim-surround'
 call plug#end()
 " vim-plug end
 
@@ -21,6 +22,11 @@ set backspace=indent,eol,start
 autocmd FileType python set expandtab
 autocmd FileType python set textwidth=79
 
+" C
+autocmd FileType c set tabstop=2
+autocmd FileType c set shiftwidth=2
+autocmd FileType c set softtabstop=2
+
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -29,11 +35,18 @@ map <C-n> :NERDTreeToggle<CR>
 map <F2> oDate:<Esc>:read !date<CR>kJ0
 
 " F5 to auto run .py file
-map <F5> :call RunPythonFile()<CR> 
-function RunPythonFile()
-	exec "w"
+map <F5> :call Run()<CR>
+function Run()
+	exe "w"
 	if &filetype ==  'python'	
-		exec "!clear"
-		exec "!time python3 %"
+		exe "!time python3 %"
+	elseif &filetype == 'c'
+		exe "!gcc % -o %< && ./%<"
 	endif
+endfunction
+
+" F6 demo
+map <F6> :call Demo()<CR>
+function Demo()
+	w
 endfunction
