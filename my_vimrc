@@ -7,6 +7,10 @@ Plug 'tpope/vim-surround'
 call plug#end()
 " vim-plug end
 
+" mouse support
+set mouse=a
+set ttymouse=xterm2
+
 filetype on
 syntax on
 
