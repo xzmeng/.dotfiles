@@ -33,7 +33,7 @@ autocmd FileType c set softtabstop=2
 
 
 " NERDTree
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeFocus<CR>
 
 " Insert current date and time
 map <F2> oDate:<Esc>:read !date<CR>kJ0
