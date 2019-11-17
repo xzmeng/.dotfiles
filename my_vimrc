@@ -27,15 +27,24 @@ set number
 set smartindent
 set backspace=indent,eol,start
 
+set scrolloff=5
+
 " Python
 autocmd FileType python set expandtab
 autocmd FileType python set textwidth=79
 
 " C
-autocmd FileType c set tabstop=2
-autocmd FileType c set shiftwidth=2
-autocmd FileType c set softtabstop=2
+autocmd FileType c set tabstop=4
+autocmd FileType c set shiftwidth=4
+autocmd FileType c set softtabstop=4
 
+" remap pane switch
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" remap tab switch
 
 " NERDTree
 map <C-n> :NERDTreeFocus<CR>
