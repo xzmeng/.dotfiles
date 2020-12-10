@@ -1,0 +1,12 @@
+[alias]
+	st = status
+	ci = commit -v 
+	co = checkout
+	br = branch
+
+[user]
+	name = Meng Xiangzhuo
+	email = aumo@foxmail.com
+
+[core]
+	editor = vim
