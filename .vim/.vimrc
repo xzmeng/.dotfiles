@@ -334,19 +334,19 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " move cursor wihout leaving insert mode
-try
-  redir => s:backspace
-  silent! execute 'set ' 't_kb?'
-  redir END
-  if s:backspace !~ '\^H'
-    inoremap <C-h> <C-o>h
-    inoremap <C-j> <C-o>j
-    inoremap <C-k> <C-o>k
-    inoremap <C-l> <C-o>l
-  endif
-finally
-  redir END
-endtry
+"try
+"  redir => s:backspace
+"  silent! execute 'set ' 't_kb?'
+"  redir END
+"  if s:backspace !~ '\^H'
+"    inoremap <C-h> <C-o>h
+"    inoremap <C-j> <C-o>j
+"    inoremap <C-k> <C-o>k
+"    inoremap <C-l> <C-o>l
+"  endif
+"finally
+"  redir END
+"endtry
 
 " switch between windows by hitting <Tab> twice
 nnoremap <silent> <Tab><Tab> <C-w>w
