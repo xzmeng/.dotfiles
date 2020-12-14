@@ -11,14 +11,14 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ##
 cd
 
-# oh my tmux
+# tmux conf
 if [ -f "tmux.conf" ]; then
 	mv .tmux.conf .tmux.conf.bak
 fi
-ln -s -f $DIRNAME/.tmux.conf
-ln -s -f $DIRNAME/.tmux.conf.local
+ln -s $HOME/.tmux.conf
+ln -s $HOME/.tmux.conf.local
 
-# zsh
+# zsh conf
 if [ -f ".zshrc" ]; then
 	mv .zshrc .zshrc.bak
 fi
@@ -26,22 +26,20 @@ cp $DIRNAME/.zshrc .zshrc
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-# vim
+# vim conf
 if [ -f ".vimrc" ]; then
 	mv .vimrc .vimrc.bak
 fi
-ln -s -f $DIRNAME/.vimrc
+ln -s $DIRNAME/.vim
+ln -s $HOME/.vim/.vimrc
+ln -s $HOME/.vim/.vimrc.local
 
-# git
+# git conf
 if [ -f ".gitconfig" ]; then
 	mv .gitconfig .gitconfig.bak
 fi
-ln -s -f $DIRNAME/.gitconfig
+ln -s $DIRNAME/.gitconfig
 
 
 ####
 cd -
-
-# fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
