@@ -1,5 +1,7 @@
-/backup
-/tmp
+/backup/*
+/tmp/*
+!/backup/.gitkeep
+!/tmp/.gitkeep
 
 .netrwhist
 .viminfo
