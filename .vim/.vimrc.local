@@ -27,6 +27,7 @@ Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'benmills/vimux'
 call plug#end()
 
 " fzf.vim
@@ -38,3 +39,9 @@ nnoremap <leader>p :Commands<CR>
 
 " NERDTree
 noremap <C-n> :NERDTreeFocus<CR>
+
+" Vimux
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vl :VimuxRunLastCommand<CR>
+map <Leader>vs :VimuxInterruptRunner<CR>
+

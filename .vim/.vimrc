@@ -431,8 +431,6 @@ set copyindent    " copy the previous indentation on autoindenting
 set shiftwidth=2  " indent with 2 spaces
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 
-" make Y consistent with C and D by yanking up to end of line
-noremap Y y$
 
 " CTRL-S saves file
 "nnoremap <C-s> :w<CR>
