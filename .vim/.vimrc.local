@@ -13,6 +13,9 @@ set laststatus=2
 " mouse support
 set mouse=a
 set ttymouse=xterm2
+" iterm2 copy to system clipboard (ssh)
+
+vnoremap <Leader>y :'<,'>w !$HOME/.iterm2/it2copy<CR><CR>
 
 
 if empty(glob('~/.vim/autoload/plug.vim'))
