@@ -5,7 +5,7 @@
 "endif
 
 
-colorscheme jellybeans
+colorscheme monokai
 
 " always show status bar
 set laststatus=2
