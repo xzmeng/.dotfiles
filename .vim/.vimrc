@@ -317,13 +317,13 @@ set sidescroll=1    " minimal number of columns to scroll horizontally
 set sidescrolloff=4 " minimal number of columns to keep around the cursor
 
 if has("vertsplit")
-  nnoremap <leader>_ <C-w>v<C-w>l
+  nnoremap <leader>% <C-w>v<C-w>l
   " split current window vertically
   set splitright  " when splitting vertically, split to the right
 endif
 if has("windows")
   " split current window horizontally
-  nnoremap <leader>- <C-w>s
+  nnoremap <leader>" <C-w>s
   set splitbelow  " when splitting horizontally, split below
 endif
 
@@ -543,7 +543,7 @@ vnoremap <silent>_ :m '<-2<CR>gv=gv
 "    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 "    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 "  endif
-"endif 
+"endif
 let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
@@ -602,14 +602,14 @@ function! BlinkMatch(t)
     let l:current = '\c\%#'.@/
     let l:highlight = matchadd('IncSearch', l:current, 1000)
     redraw
-    exec 'sleep ' . float2nr(a:t * 1000) . 'm'
+    "exec 'sleep ' . float2nr(a:t * 1000) . 'm'
     call matchdelete(l:highlight)
     redraw
 endfunction
 
 " center screen on next/previous match, blink current match
-noremap <silent> n nzzzv:call BlinkMatch(0.2)<CR>
-noremap <silent> N Nzzzv:call BlinkMatch(0.2)<CR>
+noremap <silent> n nzzzv:call BlinkMatch(1)<CR>
+noremap <silent> N Nzzzv:call BlinkMatch(1)<CR>
 
 
 function! GetVisualSelection()
