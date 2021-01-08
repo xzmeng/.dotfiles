@@ -5,7 +5,6 @@
 "endif
 
 
-colorscheme monokai
 
 " always show status bar
 set laststatus=2
@@ -15,7 +14,18 @@ set mouse=a
 set ttymouse=xterm2
 " iterm2 copy to system clipboard (ssh)
 
-vnoremap <Leader>y :'<,'>w !$HOME/.iterm2/it2copy<CR><CR>
+"vnoremap <Leader>y :'<,'>w !$HOME/.iterm2/it2copy<CR><CR>
+"vnoremap <Leader>y "zy:call writefile(getreg('z', 1, 1), $HOME.'/tmp/iterm2tmpregister.txt')<CR>:silent !$HOME/.iterm2/it2copy $HOME/tmp/iterm2tmpregister.txt<CR>
+
+" 
+nnoremap <leader>p "+p
+
+" split down and right
+set splitbelow
+set splitright
+
+" minimal window width
+set winwidth=80
 
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -31,20 +41,69 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'benmills/vimux'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
+colorscheme gruvbox
+
 " fzf.vim
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>c :Colors<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>m :Maps<CR>
-nnoremap <leader>p :Commands<CR>
+nnoremap <C-p> :Files<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fc :Colors<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fm :Maps<CR>
+nnoremap <leader>fp :Commands<CR>
 
 " NERDTree
 noremap <C-n> :NERDTreeFocus<CR>
 
 " Vimux
 map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vc :VimuxCloseRunner<CR>
 map <Leader>vl :VimuxRunLastCommand<CR>
 map <Leader>vs :VimuxInterruptRunner<CR>
+
+
+" risc-v assembly
+function RunRiscvFile()
+        call VimuxRunCommand("java -jar /Users/xzmeng/cs/cs61c/venus-jvm-latest.jar " . expand('%'))
+endfunction
+autocmd FileType asm nnoremap <buffer> <F5> :call RunRiscvFile()<CR>
+
+" Python
+function RunPythonFile()
+        call VimuxRunCommand("python " . expand('%'))
+endfunction
+autocmd FileType python nnoremap <buffer> <F5> :w<CR>:call RunPythonFile()<CR>
+
+" Vimscript
+autocmd FileType vim nnoremap <silent> <buffer> <F5> :w<CR>:source %<CR>
+autocmd FileType vim inoremap <silent> <buffer> <F5> <ESC>:w<CR>:source %<CR>
+
+" C
+function RunCFile()
+        let l:filename = expand('%')
+        let l:executable_name = expand('%:r')
+        call VimuxRunCommand("gcc -o " . executable_name . " " . filename . " && ./" . executable_name)
+endfunction
+autocmd FileType c nnoremap <buffer> <F5> :w<CR>:call RunCFile()<CR>
+autocmd FileType c inoremap <buffer> <F5> <ESC>:w<CR>:call RunCFile()<CR>a
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
