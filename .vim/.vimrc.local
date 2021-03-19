@@ -56,6 +56,7 @@ nnoremap <leader>fp :Commands<CR>
 
 " NERDTree
 noremap <C-n> :NERDTreeFocus<CR>
+let NERDTreeShowHidden=1
 
 " Vimux
 map <Leader>vp :VimuxPromptCommand<CR>
