@@ -1,3 +1,22 @@
+" plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'benmills/vimux'
+Plug 'morhetz/gruvbox'
+call plug#end()
+
+colorscheme monokai
+
 " -- bootstrap -----------------------------------------------------------------
 
 "set encoding=utf-8  " set vim encoding to UTF-8
@@ -69,9 +88,9 @@ let &viminfo=&viminfo . ",n" . s:vimdir . "/.viminfo" " viminfo location
 
 " -- file type detection -------------------------------------------------------
 
-"filetype on         " /!\ doesn't play well with compatible mode
-"filetype plugin on  " trigger file type specific plugins
-"filetype indent on  " indent based on file type syntax
+filetype on         " /!\ doesn't play well with compatible mode
+filetype plugin on  " trigger file type specific plugins
+filetype plugin indent on  " indent based on file type syntax
 
 
 " -- command mode --------------------------------------------------------------
@@ -91,6 +110,9 @@ endif
 "cnoremap <C-a> <home>
 " CTRL+E moves to end of line in command mode
 "cnoremap <C-e> <end>
+
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
 
 " CTRL+C closes the command window
 "if has("autocmd")
@@ -427,7 +449,8 @@ if has("autocmd")
   augroup END
 endif
 
-"set autoindent    " enable autoindenting
+set autoindent
+set smartindent    " enable autoindenting
 "set copyindent    " copy the previous indentation on autoindenting
 set shiftwidth=4  " indent with 2 spaces
 "set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
@@ -498,7 +521,7 @@ set shiftwidth=4  " indent with 2 spaces
 
 " exit from insert mode without cursor movement
 "inoremap jk <ESC>`^
-inoremap jk <ESC>
+inoremap jj <ESC>
 
 " quick insertion of newline in normal mode with <CR>
 "if has("autocmd")
@@ -537,15 +560,15 @@ inoremap jk <ESC>
 "vnoremap <silent>_ :m '<-2<CR>gv=gv
 
 " change cursor to vertical bar in insert mode when using iTerm2
-"if $TERM_PROGRAM == 'iTerm.app'
-"  if exists('$TMUX')
-"    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-"    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-"  else
-"    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-"    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-"  endif
-"endif
+if $TERM_PROGRAM == 'iTerm.app'
+  if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  endif
+endif
 let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 

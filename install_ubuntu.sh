@@ -1,8 +1,11 @@
 #!/bin/bash
-# ubuntu 18
+# ubuntu 20
+
+# tomezone
+sudo timedatectl set-timezone Asia/Shanghai
 
 SOFTWARES="curl vim tmux zsh"
-sudo apt install $SOFTWARES
+sudo apt install -y $SOFTWARES
 DIRNAME=$PWD
 
 # oh my zsh
@@ -17,13 +20,10 @@ ln -s $HOME/.tmux/.tmux.conf
 ln -s $HOME/.tmux/.tmux.conf.local
 
 # zsh conf
-if [ -f ".zshrc" ]; then
-	mv .zshrc .zshrc.bak
-fi
-cp $DIRNAME/.zshrc .zshrc
 if [ ! -d "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]; then
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 fi
+sed -i 's/plugins=(git)/plugins=(git docker docker-compose zsh-autosuggestions z)/' ~/.zshrc
 
 # vim conf
 ln -s $DIRNAME/.vim
@@ -34,7 +34,6 @@ ln -s $HOME/.vim/.vimrc.local
 if [ -f ".gitconfig" ]; then
 	mv .gitconfig .gitconfig.bak
 fi
-
 
 ln -s $DIRNAME/.gitconfig
 
