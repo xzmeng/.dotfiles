@@ -15,7 +15,8 @@ Plug 'benmills/vimux'
 Plug 'morhetz/gruvbox'
 call plug#end()
 
-colorscheme monokai
+set background=dark
+colorscheme gruvbox
 
 " -- bootstrap -----------------------------------------------------------------
 

@@ -1,7 +1,7 @@
-rm -rf ~/.tmux
-rm ~/.tmux.conf
-rm ~/.tmux.conf.local
+unlink ~/.tmux
+unlink ~/.tmux.conf
+unlink ~/.tmux.conf.local
 
-rm -rf ~/.vim
-rm ~/.vimrc
-rm ~/.vimrc.local
+unlink -rf ~/.vim
+unlink ~/.vimrc
+unlink ~/.vimrc.local

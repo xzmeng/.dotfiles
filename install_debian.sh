@@ -1,10 +1,9 @@
 #!/bin/bash
-# ubuntu 20
 
 # tomezone
 sudo timedatectl set-timezone Asia/Shanghai
 
-SOFTWARES="curl vim tmux zsh"
+SOFTWARES="tmux zsh"
 sudo apt install -y $SOFTWARES
 DIRNAME=$PWD
 
