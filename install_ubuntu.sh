@@ -7,6 +7,7 @@ sudo timedatectl set-timezone Asia/Shanghai
 extensions=(
   eamodio.gitlens
   ms-python.python
+  mutantdino.resourcemonitor
 )
 if command -v code;then
   for ext in ${extensions[@]};do
@@ -24,6 +25,33 @@ if ! command -v docker;then
   sudo sh get-docker.sh
   sudo usermod -aG docker $USER
   rm get-docker.sh
+fi
+
+# pyenv
+if [ ! -d "$HOME/.pyenv" ];then
+  sudo apt-get update; sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
+  libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+  libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+  git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+  cd ~/.pyenv && src/configure && make -C src && cd -
+
+  echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zprofile
+  echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zprofile
+  echo 'eval "$(pyenv init --path)"' >> ~/.zprofile
+
+  echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
+  echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
+  echo 'eval "$(pyenv init --path)"' >> ~/.profile
+
+  echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+  # python build dependencies
+  sudo apt-get update; sudo apt-get install make build-essential libssl-dev zlib1g-dev \
+  libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+  libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+
+  # pyenv-virtualenv
+  git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+  echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
 fi
 
 # ohmyzsh
@@ -60,4 +88,4 @@ ln -s $DIRNAME/.gitconfig
 cd -
 
 echo "finished."
-echo "If you are using vscode, kill vscode server and restart to use docker"
+echo "If you are using vscode, kill vscode server and restart (docker, pyenv)"
