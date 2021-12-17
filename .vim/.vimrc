@@ -15,6 +15,7 @@ Plug 'benmills/vimux'
 Plug 'morhetz/gruvbox'
 call plug#end()
 
+" theme
 set background=dark
 colorscheme gruvbox
 

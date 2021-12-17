@@ -1,4 +1,3 @@
-unlink ~/.tmux
 unlink ~/.tmux.conf
 unlink ~/.tmux.conf.local
 
