@@ -27,6 +27,9 @@ ln -s $DIRNAME/.vim
 ln -s $DIRNAME/.vim/.vimrc
 ln -s $DIRNAME/.vim/.vimrc.local
 
+# git
+ln -s $DIRNAME/.gitconfig
+
 ## 
 
 ####
