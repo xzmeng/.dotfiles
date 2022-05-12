@@ -5,10 +5,14 @@
 	br = branch
 
 [user]
-	name = Meng Xiangzhuo
+	name = xzmeng
 	email = aumo@foxmail.com
+
+[credential]
+	helper = /user/bin/gp credential-helper
 
 [core]
 	editor = vim
+
 [init]
 	defaultBranch = master
