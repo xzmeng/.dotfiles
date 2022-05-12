@@ -16,4 +16,4 @@ fi
 sed -i 's/plugins=(.*/plugins=(git docker docker-compose zsh-autosuggestions z)/' ~/.zshrc
 
 # git
-cp .gitconfig ~/.gitconfig
+cp ~/.dotfiles/.gitconfig ~/.gitconfig
