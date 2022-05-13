@@ -3,7 +3,8 @@
 # for gitpod
 
 # timezone
-sudo timedatectl set-timezone Asia/Shanghai
+sudo rm /etc/localtime
+sudo ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 # ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
