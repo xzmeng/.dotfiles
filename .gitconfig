@@ -9,7 +9,7 @@
 	email = aumo@foxmail.com
 
 [credential]
-	helper = /user/bin/gp credential-helper
+	helper = /usr/bin/gp credential-helper
 
 [core]
 	editor = vim
