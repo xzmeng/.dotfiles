@@ -3,6 +3,7 @@
 # for gitpod
 
 # timezone
+sudo echo /Asia/Shanghai > /etc/timezone
 sudo rm /etc/localtime
 sudo ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
