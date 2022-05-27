@@ -19,3 +19,6 @@ sed -i 's/^plugins=(.*/plugins=(docker docker-compose zsh-autosuggestions z)/' ~
 
 # git
 cp ~/.dotfiles/.gitconfig ~/.gitconfig
+
+# pyenv
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
