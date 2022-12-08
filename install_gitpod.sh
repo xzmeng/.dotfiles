@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DOTFILES_BASE=~/.dotfiles
+
 # initialize
 source <(bash -lic 'declare -px')
 
@@ -17,7 +19,7 @@ if [ ! -d "${ZSH_CUSTOM:-${HOME}/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 fi
 
 # .zshrc
-cp .gitpod.zshrc ~/.zshrc
+cp $DOTFILES_BASE/.gitpod.zshrc ~/.zshrc
 
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
