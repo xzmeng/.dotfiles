@@ -2,4 +2,4 @@
 
 # for gitpod
 
-/bin/bash ./install_gitpod.sh
+bash ~/.dotfiles/install_gitpod.sh
